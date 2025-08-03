@@ -1,0 +1,301 @@
+PatientID,Group,Terms
+PT001,Neurodevelopmental,Autistic behavior; Seizures; Intellectual disability
+PT002,Neurodevelopmental,Intellectual disability; Global developmental delay; Ataxia; Primary amenorrhea
+PT003,Cardiovascular,Ventricular septal defect; Cyanosis; Pulmonary stenosis; Coarctation of the aorta
+PT004,Neurodevelopmental,Intellectual disability; Hypotonia; Ataxia; Seizures
+PT005,Infertility,Azoospermia; Hypogonadism; Primary amenorrhea
+PT006,Infertility,Primary amenorrhea; Micropenis; Hypogonadism; Delayed puberty; Low AMH levels
+PT007,Metabolic,Elevated CK; Vomiting; Acidosis
+PT008,Infertility,Azoospermia; Primary amenorrhea; Micropenis; Low AMH levels
+PT009,Neurodevelopmental,Seizures; Microcephaly; Hypotonia; Intellectual disability
+PT010,Infertility,Micropenis; Small testes; Azoospermia; Hypergonadotropic hypogonadism
+PT011,Neurodevelopmental,Microcephaly; Seizures; Ataxia; Speech delay
+PT012,Cardiovascular,Heart murmur; Ventricular septal defect; Congenital heart defect; Cyanosis
+PT013,Infertility,Delayed puberty; Primary amenorrhea; Azoospermia; Low AMH levels; Small testes; Hypergonadotropic hypogonadism
+PT014,Metabolic,Lactic acidosis; Hyperammonemia; Hypoglycemia; Acidosis; Vomiting; Developmental regression
+PT015,Cardiovascular,Heart murmur; Cyanosis; Ventricular septal defect; Coarctation of the aorta; Pulmonary stenosis; Congenital heart defect
+PT016,Neurodevelopmental,Hypotonia; Intellectual disability; Speech delay; Microcephaly
+PT017,Metabolic,Hyperammonemia; Elevated CK; Lactic acidosis; Vomiting; Hepatomegaly; Acidosis
+PT018,Cardiovascular,Heart murmur; Congenital heart defect; Clubbing; Pulmonary stenosis; Cyanosis
+PT019,Infertility,Azoospermia; Hypergonadotropic hypogonadism; Micropenis; Small testes
+PT020,Cardiovascular,Clubbing; Failure to thrive; Cyanosis; Coarctation of the aorta
+PT021,Cardiovascular,Heart murmur; Pulmonary stenosis; Congenital heart defect
+PT022,Infertility,Hypogonadism; Primary amenorrhea; Azoospermia; Delayed puberty; Hypergonadotropic hypogonadism; Cyanosis
+PT023,Cardiovascular,Clubbing; Heart murmur; Pulmonary stenosis; Coarctation of the aorta
+PT024,Cardiovascular,Pulmonary stenosis; Coarctation of the aorta; Heart murmur; Cyanosis; Clubbing; Ventricular septal defect
+PT025,Infertility,Low AMH levels; Primary amenorrhea; Azoospermia; Micropenis; Hypergonadotropic hypogonadism; Delayed puberty; Bowed legs
+PT026,Neurodevelopmental,Global developmental delay; Seizures; Ataxia
+PT027,Infertility,Hypogonadism; Small testes; Micropenis
+PT028,Cardiovascular,Failure to thrive; Cyanosis; Pulmonary stenosis; Heart murmur
+PT029,Neurodevelopmental,Speech delay; Microcephaly; Intellectual disability; Ataxia; Global developmental delay; Hypotonia
+PT030,Neurodevelopmental,Intellectual disability; Speech delay; Hypotonia
+PT031,Neurodevelopmental,Microcephaly; Seizures; Autistic behavior; Ataxia
+PT032,Skeletal,Pectus carinatum; Joint laxity; Short stature; Bowed legs; Frontal bossing; Seizures
+PT033,Skeletal,Delayed bone age; Bowed legs; Pectus carinatum; Joint laxity
+PT034,Neurodevelopmental,Intellectual disability; Global developmental delay; Microcephaly; Hypotonia
+PT035,Metabolic,Vomiting; Acidosis; Hyperammonemia; Elevated CK; Developmental regression
+PT036,Infertility,Primary amenorrhea; Delayed puberty; Micropenis; Hypergonadotropic hypogonadism; Hepatomegaly
+PT037,Neurodevelopmental,Hypotonia; Global developmental delay; Autistic behavior; Intellectual disability; Seizures; Speech delay
+PT038,Skeletal,Joint laxity; Rhizomelia; Pectus carinatum; Delayed bone age; Short stature; Scoliosis; Elevated CK
+PT039,Skeletal,Bowed legs; Scoliosis; Pectus carinatum; Joint laxity; Delayed bone age
+PT040,Neurodevelopmental,Ataxia; Autistic behavior; Intellectual disability
+PT041,Neurodevelopmental,Autistic behavior; Seizures; Hypotonia; Global developmental delay
+PT042,Infertility,Small testes; Hypogonadism; Delayed puberty; Low AMH levels; Primary amenorrhea
+PT043,Cardiovascular,Cyanosis; Failure to thrive; Clubbing; Congenital heart defect; Coarctation of the aorta
+PT044,Skeletal,Rhizomelia; Pectus carinatum; Joint laxity; Scoliosis; Frontal bossing
+PT045,Infertility,Delayed puberty; Hypergonadotropic hypogonadism; Primary amenorrhea; Micropenis; Hypogonadism; Azoospermia; Lactic acidosis
+PT046,Infertility,Low AMH levels; Delayed puberty; Micropenis; Hypogonadism
+PT047,Neurodevelopmental,Hypotonia; Autistic behavior; Global developmental delay
+PT048,Cardiovascular,Ventricular septal defect; Cyanosis; Congenital heart defect; Clubbing
+PT049,Neurodevelopmental,Microcephaly; Speech delay; Seizures; Global developmental delay; Hypotonia
+PT050,Metabolic,Developmental regression; Vomiting; Hypoglycemia; Acidosis
+PT051,Neurodevelopmental,Speech delay; Intellectual disability; Microcephaly; Seizures
+PT052,Neurodevelopmental,Global developmental delay; Intellectual disability; Microcephaly; Seizures; Autistic behavior; Speech delay
+PT053,Skeletal,Short stature; Frontal bossing; Joint laxity; Bowed legs
+PT054,Neurodevelopmental,Speech delay; Ataxia; Autistic behavior; Microcephaly; Hypotonia
+PT055,Neurodevelopmental,Hypotonia; Autistic behavior; Ataxia; Global developmental delay; Intellectual disability
+PT056,Infertility,Hypergonadotropic hypogonadism; Delayed puberty; Low AMH levels; Primary amenorrhea; Hypogonadism
+PT057,Skeletal,Short stature; Frontal bossing; Bowed legs; Pectus carinatum; Joint laxity
+PT058,Neurodevelopmental,Speech delay; Ataxia; Global developmental delay; Hypotonia; Autistic behavior
+PT059,Infertility,Delayed puberty; Low AMH levels; Azoospermia; Micropenis; Hypogonadism; Small testes
+PT060,Skeletal,Delayed bone age; Rhizomelia; Short stature; Scoliosis; Pectus carinatum
+PT061,Cardiovascular,Failure to thrive; Pulmonary stenosis; Ventricular septal defect; Cyanosis; Heart murmur
+PT062,Skeletal,Rhizomelia; Pectus carinatum; Frontal bossing
+PT063,Infertility,Hypogonadism; Micropenis; Small testes
+PT064,Skeletal,Short stature; Pectus carinatum; Joint laxity; Bowed legs
+PT065,Neurodevelopmental,Intellectual disability; Speech delay; Autistic behavior; Seizures; Microcephaly; Ataxia
+PT066,Skeletal,Joint laxity; Delayed bone age; Bowed legs
+PT067,Cardiovascular,Congenital heart defect; Coarctation of the aorta; Cyanosis; Failure to thrive; Pulmonary stenosis; Ventricular septal defect
+PT068,Cardiovascular,Failure to thrive; Coarctation of the aorta; Heart murmur; Ventricular septal defect; Pulmonary stenosis
+PT069,Cardiovascular,Clubbing; Heart murmur; Pulmonary stenosis; Ventricular septal defect; Failure to thrive; Congenital heart defect
+PT070,Infertility,Hypogonadism; Small testes; Low AMH levels; Primary amenorrhea; Hypergonadotropic hypogonadism; Delayed puberty
+PT071,Infertility,Small testes; Azoospermia; Hypergonadotropic hypogonadism
+PT072,Skeletal,Joint laxity; Bowed legs; Delayed bone age; Scoliosis
+PT073,Metabolic,Developmental regression; Vomiting; Hyperammonemia
+PT074,Cardiovascular,Ventricular septal defect; Pulmonary stenosis; Congenital heart defect
+PT075,Infertility,Hypergonadotropic hypogonadism; Delayed puberty; Micropenis; Low AMH levels; Azoospermia; Hypogonadism
+PT076,Metabolic,Hepatomegaly; Developmental regression; Lactic acidosis; Vomiting; Hypoglycemia; Elevated CK
+PT077,Cardiovascular,Ventricular septal defect; Coarctation of the aorta; Failure to thrive
+PT078,Neurodevelopmental,Hypotonia; Intellectual disability; Microcephaly; Seizures; Global developmental delay; Autistic behavior
+PT079,Skeletal,Frontal bossing; Scoliosis; Bowed legs; Delayed bone age; Pectus carinatum; Joint laxity
+PT080,Metabolic,Hepatomegaly; Lactic acidosis; Hypoglycemia
+PT081,Neurodevelopmental,Microcephaly; Seizures; Global developmental delay
+PT082,Skeletal,Pectus carinatum; Frontal bossing; Short stature; Rhizomelia
+PT083,Metabolic,Acidosis; Hypoglycemia; Elevated CK; Hyperammonemia; Hepatomegaly
+PT084,Skeletal,Joint laxity; Rhizomelia; Short stature; Scoliosis; Bowed legs
+PT085,Skeletal,Bowed legs; Short stature; Frontal bossing
+PT086,Cardiovascular,Congenital heart defect; Clubbing; Coarctation of the aorta
+PT087,Infertility,Micropenis; Primary amenorrhea; Hypogonadism
+PT088,Neurodevelopmental,Speech delay; Ataxia; Microcephaly; Seizures; Intellectual disability; Global developmental delay
+PT089,Infertility,Low AMH levels; Hypogonadism; Micropenis; Delayed puberty; Small testes; Azoospermia
+PT090,Neurodevelopmental,Ataxia; Seizures; Microcephaly; Autistic behavior; Speech delay
+PT091,Metabolic,Lactic acidosis; Developmental regression; Hypoglycemia; Hyperammonemia; Elevated CK
+PT092,Cardiovascular,Congenital heart defect; Coarctation of the aorta; Cyanosis; Failure to thrive; Heart murmur
+PT093,Metabolic,Hyperammonemia; Acidosis; Vomiting; Developmental regression
+PT094,Neurodevelopmental,Autistic behavior; Seizures; Microcephaly
+PT095,Infertility,Low AMH levels; Delayed puberty; Hypergonadotropic hypogonadism; Small testes; Hypogonadism
+PT096,Cardiovascular,Heart murmur; Failure to thrive; Pulmonary stenosis; Clubbing; Coarctation of the aorta
+PT097,Neurodevelopmental,Speech delay; Global developmental delay; Ataxia; Autistic behavior
+PT098,Skeletal,Bowed legs; Frontal bossing; Pectus carinatum; Scoliosis
+PT099,Cardiovascular,Cyanosis; Ventricular septal defect; Failure to thrive; Clubbing; Heart murmur
+PT100,Infertility,Small testes; Low AMH levels; Primary amenorrhea
+PT101,Cardiovascular,Clubbing; Heart murmur; Pulmonary stenosis; Congenital heart defect; Coarctation of the aorta
+PT102,Metabolic,Hyperammonemia; Lactic acidosis; Hypoglycemia; Hepatomegaly; Vomiting; Acidosis
+PT103,Neurodevelopmental,Ataxia; Global developmental delay; Autistic behavior; Intellectual disability; Seizures; Speech delay
+PT104,Infertility,Hypogonadism; Primary amenorrhea; Delayed puberty
+PT105,Cardiovascular,Ventricular septal defect; Pulmonary stenosis; Failure to thrive; Clubbing
+PT106,Metabolic,Hepatomegaly; Elevated CK; Acidosis; Hyperammonemia; Hypoglycemia
+PT107,Infertility,Small testes; Azoospermia; Hypergonadotropic hypogonadism
+PT108,Skeletal,Delayed bone age; Bowed legs; Frontal bossing
+PT109,Infertility,Hypogonadism; Small testes; Micropenis
+PT110,Metabolic,Developmental regression; Lactic acidosis; Acidosis
+PT111,Skeletal,Joint laxity; Rhizomelia; Pectus carinatum; Frontal bossing; Scoliosis; Short stature; Delayed puberty
+PT112,Cardiovascular,Failure to thrive; Congenital heart defect; Pulmonary stenosis; Clubbing; Heart murmur
+PT113,Cardiovascular,Failure to thrive; Congenital heart defect; Coarctation of the aorta; Ventricular septal defect; Pulmonary stenosis; Clubbing
+PT114,Infertility,Azoospermia; Low AMH levels; Micropenis
+PT115,Cardiovascular,Coarctation of the aorta; Failure to thrive; Congenital heart defect
+PT116,Skeletal,Pectus carinatum; Scoliosis; Joint laxity; Rhizomelia; Bowed legs; Delayed bone age
+PT117,Neurodevelopmental,Speech delay; Microcephaly; Hypotonia; Ataxia; Global developmental delay; Intellectual disability
+PT118,Metabolic,Vomiting; Hyperammonemia; Elevated CK; Hepatomegaly; Developmental regression; Micropenis
+PT119,Neurodevelopmental,Global developmental delay; Speech delay; Autistic behavior; Microcephaly; Intellectual disability; Ataxia
+PT120,Infertility,Low AMH levels; Hypergonadotropic hypogonadism; Primary amenorrhea; Azoospermia; Small testes; Hypogonadism
+PT121,Infertility,Low AMH levels; Primary amenorrhea; Hypergonadotropic hypogonadism; Delayed puberty; Azoospermia; Small testes
+PT122,Cardiovascular,Ventricular septal defect; Congenital heart defect; Cyanosis
+PT123,Neurodevelopmental,Seizures; Speech delay; Ataxia; Microcephaly; Hypotonia; Autistic behavior
+PT124,Metabolic,Hyperammonemia; Hypoglycemia; Developmental regression; Elevated CK; Vomiting; Acidosis
+PT125,Cardiovascular,Cyanosis; Clubbing; Pulmonary stenosis; Ventricular septal defect
+PT126,Cardiovascular,Congenital heart defect; Clubbing; Heart murmur; Ventricular septal defect; Pulmonary stenosis
+PT127,Metabolic,Acidosis; Lactic acidosis; Elevated CK; Hyperammonemia; Developmental regression; Hypoglycemia
+PT128,Skeletal,Delayed bone age; Joint laxity; Bowed legs; Short stature
+PT129,Metabolic,Vomiting; Acidosis; Hyperammonemia; Hypoglycemia; Developmental regression; Hepatomegaly
+PT130,Cardiovascular,Cyanosis; Ventricular septal defect; Pulmonary stenosis; Congenital heart defect; Heart murmur; Delayed bone age
+PT131,Skeletal,Pectus carinatum; Delayed bone age; Scoliosis
+PT132,Metabolic,Acidosis; Vomiting; Hyperammonemia
+PT133,Metabolic,Hyperammonemia; Vomiting; Elevated CK; Hepatomegaly; Acidosis
+PT134,Infertility,Azoospermia; Hypogonadism; Primary amenorrhea; Micropenis
+PT135,Infertility,Primary amenorrhea; Small testes; Low AMH levels
+PT136,Infertility,Small testes; Azoospermia; Delayed puberty; Hypogonadism; Hypergonadotropic hypogonadism; Primary amenorrhea
+PT137,Cardiovascular,Pulmonary stenosis; Failure to thrive; Coarctation of the aorta; Cyanosis; Heart murmur; Ventricular septal defect
+PT138,Metabolic,Hepatomegaly; Vomiting; Developmental regression; Lactic acidosis; Hypoglycemia; Delayed puberty
+PT139,Metabolic,Hyperammonemia; Vomiting; Lactic acidosis; Hypoglycemia; Developmental regression
+PT140,Neurodevelopmental,Intellectual disability; Autistic behavior; Hypotonia; Ataxia
+PT141,Infertility,Hypergonadotropic hypogonadism; Small testes; Primary amenorrhea
+PT142,Neurodevelopmental,Autistic behavior; Intellectual disability; Seizures; Ataxia; Hypotonia; Global developmental delay
+PT143,Cardiovascular,Clubbing; Heart murmur; Congenital heart defect; Ventricular septal defect; Failure to thrive
+PT144,Neurodevelopmental,Hypotonia; Global developmental delay; Ataxia; Speech delay; Microcephaly
+PT145,Skeletal,Rhizomelia; Delayed bone age; Joint laxity; Scoliosis; Bowed legs
+PT146,Infertility,Azoospermia; Hypogonadism; Primary amenorrhea; Low AMH levels; Delayed puberty
+PT147,Metabolic,Hypoglycemia; Vomiting; Developmental regression; Hepatomegaly; Lactic acidosis
+PT148,Metabolic,Elevated CK; Hyperammonemia; Developmental regression; Lactic acidosis; Hepatomegaly
+PT149,Metabolic,Acidosis; Elevated CK; Hypoglycemia
+PT150,Metabolic,Vomiting; Hepatomegaly; Hypoglycemia; Hyperammonemia; Elevated CK
+PT151,Metabolic,Hypoglycemia; Hyperammonemia; Elevated CK
+PT152,Metabolic,Vomiting; Elevated CK; Acidosis; Hypoglycemia; Developmental regression
+PT153,Metabolic,Elevated CK; Hepatomegaly; Acidosis; Lactic acidosis; Hypoglycemia; Developmental regression
+PT154,Skeletal,Joint laxity; Frontal bossing; Scoliosis; Rhizomelia; Delayed bone age; Developmental regression
+PT155,Neurodevelopmental,Seizures; Speech delay; Ataxia; Autistic behavior; Global developmental delay; Microcephaly
+PT156,Skeletal,Bowed legs; Short stature; Rhizomelia; Joint laxity
+PT157,Skeletal,Scoliosis; Delayed bone age; Rhizomelia; Short stature; Pectus carinatum
+PT158,Skeletal,Rhizomelia; Delayed bone age; Joint laxity; Short stature
+PT159,Neurodevelopmental,Global developmental delay; Hypotonia; Seizures; Autistic behavior
+PT160,Skeletal,Short stature; Joint laxity; Frontal bossing; Bowed legs; Pectus carinatum
+PT161,Metabolic,Acidosis; Elevated CK; Vomiting; Hepatomegaly; Developmental regression; Lactic acidosis
+PT162,Cardiovascular,Coarctation of the aorta; Pulmonary stenosis; Heart murmur
+PT163,Neurodevelopmental,Intellectual disability; Microcephaly; Speech delay; Global developmental delay; Ataxia; Hypotonia
+PT164,Neurodevelopmental,Speech delay; Autistic behavior; Seizures; Acidosis
+PT165,Metabolic,Hyperammonemia; Elevated CK; Vomiting; Developmental regression; Hepatomegaly
+PT166,Neurodevelopmental,Intellectual disability; Microcephaly; Seizures; Ataxia
+PT167,Metabolic,Vomiting; Acidosis; Hepatomegaly; Lactic acidosis; Developmental regression; Hypoglycemia
+PT168,Infertility,Low AMH levels; Primary amenorrhea; Hypergonadotropic hypogonadism; Micropenis; Speech delay
+PT169,Skeletal,Frontal bossing; Pectus carinatum; Short stature
+PT170,Metabolic,Elevated CK; Hyperammonemia; Lactic acidosis
+PT171,Cardiovascular,Clubbing; Heart murmur; Pulmonary stenosis; Cyanosis
+PT172,Infertility,Azoospermia; Hypergonadotropic hypogonadism; Small testes; Delayed puberty; Low AMH levels
+PT173,Cardiovascular,Coarctation of the aorta; Congenital heart defect; Cyanosis
+PT174,Infertility,Micropenis; Primary amenorrhea; Azoospermia; Low AMH levels; Hypogonadism; Seizures
+PT175,Cardiovascular,Ventricular septal defect; Pulmonary stenosis; Failure to thrive; Clubbing
+PT176,Infertility,Azoospermia; Primary amenorrhea; Low AMH levels; Micropenis; Hypergonadotropic hypogonadism
+PT177,Infertility,Hypergonadotropic hypogonadism; Hypogonadism; Delayed puberty; Low AMH levels; Micropenis; Azoospermia
+PT178,Cardiovascular,Heart murmur; Pulmonary stenosis; Congenital heart defect
+PT179,Cardiovascular,Coarctation of the aorta; Congenital heart defect; Cyanosis; Pulmonary stenosis; Ventricular septal defect; Failure to thrive
+PT180,Skeletal,Rhizomelia; Scoliosis; Delayed bone age; Short stature; Clubbing
+PT181,Skeletal,Bowed legs; Rhizomelia; Delayed bone age; Scoliosis; Short stature; Joint laxity
+PT182,Neurodevelopmental,Global developmental delay; Microcephaly; Ataxia; Hypotonia; Intellectual disability; Autistic behavior
+PT183,Metabolic,Hypoglycemia; Developmental regression; Hepatomegaly; Lactic acidosis; Hyperammonemia
+PT184,Cardiovascular,Heart murmur; Congenital heart defect; Pulmonary stenosis; Ventricular septal defect; Cyanosis; Failure to thrive
+PT185,Cardiovascular,Ventricular septal defect; Failure to thrive; Clubbing
+PT186,Skeletal,Scoliosis; Short stature; Rhizomelia; Delayed bone age; Joint laxity
+PT187,Infertility,Small testes; Azoospermia; Primary amenorrhea; Hypergonadotropic hypogonadism; Low AMH levels
+PT188,Cardiovascular,Cyanosis; Failure to thrive; Heart murmur; Pulmonary stenosis
+PT189,Cardiovascular,Heart murmur; Ventricular septal defect; Failure to thrive; Clubbing; Cyanosis; Pulmonary stenosis; Elevated CK
+PT190,Infertility,Micropenis; Delayed puberty; Primary amenorrhea
+PT191,Metabolic,Hepatomegaly; Lactic acidosis; Vomiting; Intellectual disability
+PT192,Metabolic,Hyperammonemia; Vomiting; Elevated CK
+PT193,Infertility,Small testes; Primary amenorrhea; Hypogonadism; Hypergonadotropic hypogonadism; Low AMH levels; Micropenis; Short stature
+PT194,Skeletal,Pectus carinatum; Rhizomelia; Delayed bone age; Frontal bossing; Joint laxity; Bowed legs
+PT195,Infertility,Hypergonadotropic hypogonadism; Low AMH levels; Small testes; Delayed puberty; Primary amenorrhea; Micropenis
+PT196,Neurodevelopmental,Seizures; Autistic behavior; Speech delay; Microcephaly; Hypotonia
+PT197,Cardiovascular,Heart murmur; Congenital heart defect; Coarctation of the aorta; Cyanosis
+PT198,Infertility,Small testes; Delayed puberty; Micropenis; Primary amenorrhea; Low AMH levels; Hypogonadism
+PT199,Infertility,Azoospermia; Micropenis; Hypergonadotropic hypogonadism; Hypogonadism
+PT200,Neurodevelopmental,Autistic behavior; Seizures; Intellectual disability; Hypotonia; Microcephaly
+PT201,Skeletal,Joint laxity; Scoliosis; Short stature; Rhizomelia
+PT202,Cardiovascular,Heart murmur; Ventricular septal defect; Coarctation of the aorta
+PT203,Metabolic,Lactic acidosis; Hypoglycemia; Acidosis; Elevated CK
+PT204,Skeletal,Short stature; Bowed legs; Scoliosis; Joint laxity; Delayed bone age; Frontal bossing
+PT205,Metabolic,Developmental regression; Lactic acidosis; Hyperammonemia; Hypoglycemia
+PT206,Cardiovascular,Failure to thrive; Ventricular septal defect; Clubbing; Pulmonary stenosis; Coarctation of the aorta; Congenital heart defect
+PT207,Cardiovascular,Coarctation of the aorta; Congenital heart defect; Heart murmur; Pulmonary stenosis
+PT208,Cardiovascular,Cyanosis; Clubbing; Congenital heart defect
+PT209,Infertility,Small testes; Hypergonadotropic hypogonadism; Hypogonadism; Primary amenorrhea; Azoospermia; Micropenis
+PT210,Neurodevelopmental,Global developmental delay; Microcephaly; Autistic behavior; Hypotonia; Seizures; Intellectual disability
+PT211,Infertility,Primary amenorrhea; Small testes; Low AMH levels; Hypergonadotropic hypogonadism
+PT212,Skeletal,Rhizomelia; Delayed bone age; Bowed legs
+PT213,Skeletal,Pectus carinatum; Rhizomelia; Short stature; Frontal bossing; Delayed bone age; Joint laxity
+PT214,Skeletal,Joint laxity; Delayed bone age; Scoliosis; Pectus carinatum; Frontal bossing; Short stature; Failure to thrive
+PT215,Neurodevelopmental,Ataxia; Autistic behavior; Intellectual disability; Small testes
+PT216,Infertility,Primary amenorrhea; Delayed puberty; Small testes; Azoospermia; Hypogonadism; Low AMH levels
+PT217,Neurodevelopmental,Seizures; Autistic behavior; Intellectual disability; Speech delay; Global developmental delay
+PT218,Metabolic,Vomiting; Lactic acidosis; Hyperammonemia
+PT219,Infertility,Micropenis; Azoospermia; Low AMH levels
+PT220,Neurodevelopmental,Hypotonia; Global developmental delay; Ataxia; Autistic behavior; Speech delay
+PT221,Skeletal,Pectus carinatum; Frontal bossing; Joint laxity; Delayed bone age; Short stature; Scoliosis
+PT222,Metabolic,Elevated CK; Hypoglycemia; Hepatomegaly
+PT223,Neurodevelopmental,Autistic behavior; Ataxia; Microcephaly; Intellectual disability; Speech delay
+PT224,Skeletal,Frontal bossing; Delayed bone age; Short stature; Scoliosis; Rhizomelia
+PT225,Infertility,Hypergonadotropic hypogonadism; Micropenis; Hypogonadism; Low AMH levels; Small testes; Primary amenorrhea
+PT226,Metabolic,Elevated CK; Vomiting; Hepatomegaly; Developmental regression; Acidosis
+PT227,Skeletal,Frontal bossing; Short stature; Delayed bone age; Scoliosis; Rhizomelia
+PT228,Cardiovascular,Clubbing; Heart murmur; Pulmonary stenosis; Failure to thrive; Ventricular septal defect; Congenital heart defect
+PT229,Infertility,Delayed puberty; Micropenis; Primary amenorrhea; Hypergonadotropic hypogonadism; Hypogonadism; Azoospermia
+PT230,Skeletal,Scoliosis; Delayed bone age; Rhizomelia
+PT231,Metabolic,Lactic acidosis; Hepatomegaly; Hypoglycemia
+PT232,Infertility,Hypergonadotropic hypogonadism; Delayed puberty; Primary amenorrhea; Low AMH levels; Azoospermia
+PT233,Infertility,Low AMH levels; Hypergonadotropic hypogonadism; Primary amenorrhea; Delayed puberty; Azoospermia
+PT234,Metabolic,Elevated CK; Hypoglycemia; Hepatomegaly; Acidosis; Vomiting
+PT235,Metabolic,Elevated CK; Vomiting; Lactic acidosis
+PT236,Skeletal,Pectus carinatum; Joint laxity; Short stature; Delayed bone age; Frontal bossing
+PT237,Metabolic,Acidosis; Hyperammonemia; Lactic acidosis
+PT238,Cardiovascular,Coarctation of the aorta; Ventricular septal defect; Cyanosis; Heart murmur; Clubbing
+PT239,Neurodevelopmental,Hypotonia; Seizures; Microcephaly; Global developmental delay
+PT240,Cardiovascular,Failure to thrive; Ventricular septal defect; Coarctation of the aorta; Cyanosis; Congenital heart defect; Hyperammonemia
+PT241,Cardiovascular,Ventricular septal defect; Failure to thrive; Coarctation of the aorta; Congenital heart defect; Cyanosis; Pulmonary stenosis
+PT242,Metabolic,Acidosis; Hypoglycemia; Elevated CK; Hyperammonemia; Vomiting; Hepatomegaly
+PT243,Neurodevelopmental,Hypotonia; Ataxia; Seizures
+PT244,Skeletal,Rhizomelia; Delayed bone age; Short stature; Scoliosis; Joint laxity
+PT245,Cardiovascular,Clubbing; Heart murmur; Failure to thrive; Coarctation of the aorta; Congenital heart defect
+PT246,Skeletal,Scoliosis; Frontal bossing; Rhizomelia; Delayed bone age
+PT247,Cardiovascular,Congenital heart defect; Failure to thrive; Ventricular septal defect
+PT248,Cardiovascular,Pulmonary stenosis; Ventricular septal defect; Coarctation of the aorta; Failure to thrive; Congenital heart defect
+PT249,Cardiovascular,Coarctation of the aorta; Pulmonary stenosis; Cyanosis; Ventricular septal defect; Clubbing
+PT250,Neurodevelopmental,Ataxia; Microcephaly; Intellectual disability; Speech delay
+PT251,Cardiovascular,Heart murmur; Ventricular septal defect; Failure to thrive; Clubbing
+PT252,Infertility,Small testes; Hypergonadotropic hypogonadism; Low AMH levels; Delayed puberty; Primary amenorrhea; Azoospermia
+PT253,Neurodevelopmental,Ataxia; Seizures; Intellectual disability; Global developmental delay; Autistic behavior
+PT254,Metabolic,Developmental regression; Vomiting; Hypoglycemia; Lactic acidosis; Elevated CK; Hepatomegaly
+PT255,Metabolic,Hyperammonemia; Lactic acidosis; Developmental regression; Hepatomegaly; Elevated CK; Hypoglycemia
+PT256,Skeletal,Frontal bossing; Short stature; Delayed bone age; Scoliosis
+PT257,Metabolic,Hepatomegaly; Vomiting; Hyperammonemia; Developmental regression; Hypoglycemia
+PT258,Infertility,Micropenis; Primary amenorrhea; Hypogonadism; Hypergonadotropic hypogonadism; Azoospermia; Low AMH levels
+PT259,Neurodevelopmental,Ataxia; Intellectual disability; Autistic behavior; Hypotonia; Global developmental delay; Microcephaly
+PT260,Metabolic,Acidosis; Elevated CK; Lactic acidosis; Hypoglycemia; Vomiting
+PT261,Metabolic,Hepatomegaly; Hyperammonemia; Hypoglycemia
+PT262,Metabolic,Lactic acidosis; Elevated CK; Vomiting; Hypoglycemia; Hyperammonemia; Developmental regression
+PT263,Metabolic,Acidosis; Elevated CK; Vomiting; Hyperammonemia; Developmental regression
+PT264,Infertility,Primary amenorrhea; Small testes; Hypergonadotropic hypogonadism; Low AMH levels; Hypogonadism; Micropenis
+PT265,Neurodevelopmental,Autistic behavior; Speech delay; Ataxia; Intellectual disability; Seizures; Hypotonia; Clubbing
+PT266,Cardiovascular,Clubbing; Ventricular septal defect; Heart murmur; Cyanosis; Congenital heart defect; Failure to thrive
+PT267,Neurodevelopmental,Global developmental delay; Microcephaly; Hypotonia; Intellectual disability
+PT268,Skeletal,Pectus carinatum; Delayed bone age; Frontal bossing; Short stature; Joint laxity; Scoliosis
+PT269,Infertility,Hypergonadotropic hypogonadism; Small testes; Azoospermia; Hypogonadism; Low AMH levels; Delayed puberty
+PT270,Infertility,Hypogonadism; Azoospermia; Small testes; Delayed puberty; Micropenis; Primary amenorrhea
+PT271,Infertility,Hypogonadism; Micropenis; Hypergonadotropic hypogonadism; Low AMH levels; Small testes
+PT272,Cardiovascular,Coarctation of the aorta; Congenital heart defect; Failure to thrive; Heart murmur; Pulmonary stenosis
+PT273,Metabolic,Lactic acidosis; Hyperammonemia; Hepatomegaly; Vomiting; Acidosis
+PT274,Metabolic,Hyperammonemia; Hypoglycemia; Vomiting; Elevated CK; Lactic acidosis
+PT275,Infertility,Azoospermia; Delayed puberty; Micropenis; Hypergonadotropic hypogonadism
+PT276,Neurodevelopmental,Microcephaly; Global developmental delay; Intellectual disability; Ataxia
+PT277,Metabolic,Lactic acidosis; Hepatomegaly; Elevated CK
+PT278,Skeletal,Pectus carinatum; Bowed legs; Frontal bossing; Joint laxity; Scoliosis; Rhizomelia
+PT279,Neurodevelopmental,Microcephaly; Autistic behavior; Speech delay
+PT280,Neurodevelopmental,Intellectual disability; Ataxia; Seizures; Global developmental delay
+PT281,Metabolic,Lactic acidosis; Acidosis; Hyperammonemia; Hepatomegaly; Elevated CK; Hypoglycemia
+PT282,Neurodevelopmental,Autistic behavior; Microcephaly; Speech delay; Ataxia; Intellectual disability
+PT283,Skeletal,Rhizomelia; Joint laxity; Short stature; Scoliosis; Delayed bone age; Pectus carinatum
+PT284,Infertility,Primary amenorrhea; Micropenis; Small testes; Hypergonadotropic hypogonadism
+PT285,Skeletal,Delayed bone age; Pectus carinatum; Bowed legs; Rhizomelia
+PT286,Metabolic,Lactic acidosis; Hypoglycemia; Developmental regression
+PT287,Skeletal,Rhizomelia; Bowed legs; Joint laxity
+PT288,Infertility,Delayed puberty; Low AMH levels; Micropenis; Hypergonadotropic hypogonadism; Primary amenorrhea
+PT289,Infertility,Primary amenorrhea; Micropenis; Low AMH levels; Hypogonadism
+PT290,Metabolic,Hypoglycemia; Acidosis; Lactic acidosis; Vomiting; Hyperammonemia
+PT291,Skeletal,Scoliosis; Bowed legs; Frontal bossing; Rhizomelia; Pectus carinatum; Joint laxity
+PT292,Metabolic,Developmental regression; Acidosis; Elevated CK; Hepatomegaly
+PT293,Cardiovascular,Cyanosis; Coarctation of the aorta; Congenital heart defect; Heart murmur; Failure to thrive
+PT294,Skeletal,Frontal bossing; Delayed bone age; Rhizomelia; Bowed legs
+PT295,Skeletal,Joint laxity; Rhizomelia; Bowed legs; Short stature; Frontal bossing; Delayed bone age
+PT296,Metabolic,Hyperammonemia; Acidosis; Lactic acidosis
+PT297,Metabolic,Hepatomegaly; Acidosis; Hypoglycemia; Elevated CK; Hyperammonemia; Azoospermia
+PT298,Cardiovascular,Cyanosis; Pulmonary stenosis; Congenital heart defect
+PT299,Skeletal,Delayed bone age; Scoliosis; Bowed legs; Frontal bossing
+PT300,Metabolic,Hypoglycemia; Acidosis; Vomiting; Elevated CK; Hyperammonemia; Lactic acidosis
