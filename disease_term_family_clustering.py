@@ -1,5 +1,6 @@
 import os
 import re
+import numpy as np
 import networkx as nx
 from collections import defaultdict, Counter
 import csv
@@ -93,20 +94,34 @@ def build_system_documents(disease_to_hpos, system_roots, G):
     return {system: " ".join(terms) for system, terms in system_to_terms.items()}
 
 def compute_tfidf(documents: dict) -> pd.DataFrame:
-    """Compute TF-IDF matrix for a dict of documents keyed by system/disease."""
-    if not documents:
-        raise ValueError("No documents provided for TF-IDF computation")
+    """
+    Computes an optimized TF-IDF matrix from a dict of {item: "HPO terms"}.
 
-    keys = list(documents.keys())
-    docs = list(documents.values())
+    system_documents: dict
+        Keys = organ systems or diseases
+        Values = single string of HPO terms separated by spaces
+    """
+    items = list(documents.keys())
+    docs = [documents[item] for item in items]
+    
+    # ⚡ OPTIMIZATION PARAMETERS ⚡
+    vectorizer = TfidfVectorizer(
+        tokenizer=custom_tokenizer,  # only capture proper HPO IDs
+        dtype=np.float32,           # use float32 to cut memory in half
+        lowercase=False,             # skip lowercasing since HPO IDs are already uniform
+        token_pattern=None
+    )
+    
+    tfidf_matrix = vectorizer.fit_transform(docs)  # keep as sparse for speed/memory
 
-    vectorizer = TfidfVectorizer(tokenizer=custom_tokenizer, lowercase=False, token_pattern=None)
-    tfidf_matrix = vectorizer.fit_transform(docs)
-
-    if tfidf_matrix.shape[1] == 0:
-        raise ValueError("TF-IDF matrix is empty. Check tokenization or document content.")
-
-    return pd.DataFrame(tfidf_matrix.toarray(), index=keys, columns=vectorizer.get_feature_names_out())
+    # Convert to a sparse-friendly DataFrame
+    tfidf_df = pd.DataFrame.sparse.from_spmatrix(
+        tfidf_matrix, 
+        index=items, 
+        columns=vectorizer.get_feature_names_out()
+    )
+    
+    return tfidf_df
 
 # =======================
 # Visualization Functions
