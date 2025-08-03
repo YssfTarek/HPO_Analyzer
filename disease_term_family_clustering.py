@@ -1,55 +1,86 @@
 import os
 import re
+import logging
+from collections import defaultdict
+from typing import Dict, List
+
 import numpy as np
-import networkx as nx
-from collections import defaultdict, Counter
-import csv
 import pandas as pd
-from sklearn.feature_extraction.text import TfidfTransformer, TfidfVectorizer
+import networkx as nx
+from sklearn.feature_extraction.text import TfidfVectorizer
 import seaborn as sns
 import matplotlib.pyplot as plt
+
+# =======================
+# Configuration
+# =======================
+OBO_PATH = "./hpo_data/hp.obo"
+HPOA_PATH = "./hpo_data/phenotype.hpoa"
+OUTPUT_DIR = "./results"
+
+TOP_SYSTEMS = {
+    "HP:0000119": "Abnormality of the genitourinary system",
+    "HP:0000707": "Abnormality of the nervous system",
+    "HP:0000818": "Abnormality of the endocrine system",
+    "HP:0001197": "Abnormality of prenatal development or birth",
+    "HP:0001574": "Abnormality of the integument",
+    "HP:0001626": "Abnormality of the cardiovascular system",
+    "HP:0001871": "Abnormality of blood and blood-forming tissues",
+    "HP:0001939": "Abnormality of metabolism/homeostasis",
+    "HP:0002086": "Abnormality of the respiratory system",
+    "HP:0002715": "Abnormality of the immune system",
+    "HP:0025031": "Abnormality of the digestive system",
+    "HP:0033127": "Abnormality of the musculoskeletal system",
+}
+
+# =======================
+# Logging Setup
+# =======================
+logging.basicConfig(
+    format="%(asctime)s - %(levelname)s - %(message)s", level=logging.INFO
+)
+logger = logging.getLogger(__name__)
 
 # =======================
 # Utility Functions
 # =======================
 
-def ensure_dir(directory):
-    """Create directory if not exists"""
-    if not os.path.exists(directory):
-        os.makedirs(directory)
+def ensure_dir(directory: str) -> None:
+    os.makedirs(directory, exist_ok=True)
 
 def clean_filename(name: str) -> str:
-    """Clean system/disease names to safe filenames."""
     return re.sub(r'[^a-zA-Z0-9_\-]', '_', name)
 
-def custom_tokenizer(text):
-    """Tokenizer to keep HPO IDs intact."""
+def custom_tokenizer(text: str) -> List[str]:
     return re.findall(r'HP:\d{7}', text)
 
 # =======================
 # Data Loading
 # =======================
 
-def load_hpo_graph(obo_path="./hpo_data/hp.obo"):
-    """Parses the HPO OBO file into a directed graph."""
+def load_hpo_graph(obo_path: str = OBO_PATH) -> nx.DiGraph:
     G = nx.DiGraph()
-    with open(obo_path) as f:
-        current_term = None
-        for line in f:
-            line = line.strip()
-            if line == "[Term]":
-                current_term = None
-            elif line.startswith("id: HP:"):
-                current_term = line.split()[1]
-                G.add_node(current_term)
-            elif line.startswith("is_a: HP:"):
-                parent = line.split()[1]
-                if current_term:
-                    G.add_edge(parent, current_term)
+    try:
+        with open(obo_path) as f:
+            current_term = None
+            for line in f:
+                line = line.strip()
+                if line == "[Term]":
+                    current_term = None
+                elif line.startswith("id: HP:"):
+                    current_term = line.split()[1]
+                    G.add_node(current_term)
+                elif line.startswith("is_a: HP:"):
+                    parent = line.split()[1]
+                    if current_term:
+                        G.add_edge(parent, current_term)
+        logger.info(f"Loaded HPO graph with {len(G.nodes)} nodes and {len(G.edges)} edges.")
+    except FileNotFoundError:
+        logger.error(f"OBO file not found at {obo_path}")
+        raise
     return G
 
-def build_hpo_name_map(obo_path="./hpo_data/hp.obo"):
-    """Builds dictionary mapping HPO ID to its name."""
+def build_hpo_name_map(obo_path: str = OBO_PATH) -> Dict[str, str]:
     name_map = {}
     with open(obo_path) as f:
         current_id = None
@@ -59,26 +90,32 @@ def build_hpo_name_map(obo_path="./hpo_data/hp.obo"):
                 current_id = line.split()[1]
             elif line.startswith("name:") and current_id:
                 name_map[current_id] = line[6:]
+    logger.info(f"Built HPO name map with {len(name_map)} entries.")
     return name_map
 
-def load_hpoa_file(hpoa_path="./hpo_data/phenotype.hpoa"):
-    """Load the HPO annotation file (.hpoa) and filter for phenotypic annotations."""
+def load_hpoa_file(hpoa_path: str = HPOA_PATH) -> pd.DataFrame:
     df = pd.read_csv(hpoa_path, sep="\t", comment="#", low_memory=False)
     df = df[df['aspect'] == 'P']
+    logger.info(f"Loaded HPOA file with {len(df)} phenotypic annotations.")
     return df
 
 # =======================
 # Data Transformation
 # =======================
 
-def build_disease_to_hpo(df: pd.DataFrame) -> dict:
+def build_disease_to_hpo(df: pd.DataFrame) -> Dict[str, List[str]]:
     disease_to_hpos = defaultdict(set)
     for _, row in df.iterrows():
         disease_to_hpos[row["database_id"]].add(row['hpo_id'])
-    return {k: list(v) for k, v in disease_to_hpos.items()}
+    result = {k: list(v) for k, v in disease_to_hpos.items()}
+    logger.info(f"Built disease→HPO map for {len(result)} diseases.")
+    return result
 
-def build_system_documents(disease_to_hpos, system_roots, G):
-    """Build a concatenated string of HPO IDs per system for TF-IDF."""
+def build_system_documents(
+    disease_to_hpos: Dict[str, List[str]], 
+    system_roots: Dict[str, str], 
+    G: nx.DiGraph
+) -> Dict[str, str]:
     hpo_to_system = {}
     for root_id, system_name in system_roots.items():
         for desc in nx.descendants(G, root_id):
@@ -86,48 +123,69 @@ def build_system_documents(disease_to_hpos, system_roots, G):
         hpo_to_system[root_id] = system_name
 
     system_to_terms = defaultdict(list)
-    for disease, hpos in disease_to_hpos.items():
+    for hpos in disease_to_hpos.values():
         for hpo in hpos:
             if hpo in hpo_to_system:
                 system_to_terms[hpo_to_system[hpo]].append(hpo)
 
+    logger.info(f"Built {len(system_to_terms)} system documents.")
     return {system: " ".join(terms) for system, terms in system_to_terms.items()}
 
-def compute_tfidf(documents: dict) -> pd.DataFrame:
-    """
-    Computes an optimized TF-IDF matrix from a dict of {item: "HPO terms"}.
+def compute_tfidf(documents: Dict[str, str]) -> pd.DataFrame:
+    if not documents:
+        logger.warning("No documents provided for TF-IDF computation.")
+        return pd.DataFrame()
 
-    system_documents: dict
-        Keys = organ systems or diseases
-        Values = single string of HPO terms separated by spaces
-    """
     items = list(documents.keys())
-    docs = [documents[item] for item in items]
-    
-    # ⚡ OPTIMIZATION PARAMETERS ⚡
+    docs = list(documents.values())
+
     vectorizer = TfidfVectorizer(
-        tokenizer=custom_tokenizer,  # only capture proper HPO IDs
-        dtype=np.float32,           # use float32 to cut memory in half
-        lowercase=False,             # skip lowercasing since HPO IDs are already uniform
+        tokenizer=custom_tokenizer,
+        dtype=np.float32,
+        lowercase=False,
         token_pattern=None
     )
     
-    tfidf_matrix = vectorizer.fit_transform(docs)  # keep as sparse for speed/memory
-
-    # Convert to a sparse-friendly DataFrame
+    tfidf_matrix = vectorizer.fit_transform(docs)
     tfidf_df = pd.DataFrame.sparse.from_spmatrix(
         tfidf_matrix, 
         index=items, 
         columns=vectorizer.get_feature_names_out()
     )
+    logger.info(f"TF-IDF matrix computed with shape {tfidf_df.shape}.")
+    return tfidf_df
+
+def compute_tfidf_disease(documents: Dict[str, str], min_df: int = 2, max_features: int = 5000) -> pd.DataFrame:
+    if not documents:
+        logger.warning("No disease documents provided for TF-IDF computation.")
+        return pd.DataFrame()
+
+    items = list(documents.keys())
+    docs = list(documents.values())
+
+    vectorizer = TfidfVectorizer(
+        tokenizer=custom_tokenizer,
+        dtype=np.float32,
+        lowercase=False,
+        token_pattern=None,
+        min_df=min_df,
+        max_features=max_features
+    )
     
+    tfidf_matrix = vectorizer.fit_transform(docs)
+    tfidf_df = pd.DataFrame.sparse.from_spmatrix(
+        tfidf_matrix, 
+        index=items, 
+        columns=vectorizer.get_feature_names_out()
+    )
+    logger.info(f"Disease-level TF-IDF matrix computed with shape {tfidf_df.shape}.")
     return tfidf_df
 
 # =======================
 # Visualization Functions
 # =======================
 
-def plot_top_terms(tfidf_df, name_map, output_dir="./results", top_n=15, threshold=0.1):
+def plot_top_terms(tfidf_df: pd.DataFrame, name_map: Dict[str, str], output_dir: str = OUTPUT_DIR, top_n: int = 15, threshold: float = 0.1):
     ensure_dir(output_dir)
     for entity in tfidf_df.index:
         row = tfidf_df.loc[entity]
@@ -149,15 +207,14 @@ def plot_top_terms(tfidf_df, name_map, output_dir="./results", top_n=15, thresho
         plt.savefig(fname)
         plt.close()
 
-def plot_clustermap(tfidf_df, output_path, level="system"):
+def plot_clustermap(tfidf_df: pd.DataFrame, output_path: str, level: str = "system"):
+    if tfidf_df.empty:
+        logger.warning(f"Skipping {level} clustermap: no data.")
+        return
+
     ensure_dir(os.path.dirname(output_path))
 
-    # Use Ward+Euclidean for small dense data, Average+Cosine for larger data
-    if tfidf_df.shape[0] <= 20:
-        metric, method = 'euclidean', 'ward'
-    else:
-        metric, method = 'cosine', 'average'
-
+    metric, method = ('euclidean', 'ward') if tfidf_df.shape[0] <= 20 else ('cosine', 'average')
     sns.clustermap(tfidf_df, metric=metric, method=method, figsize=(12, 8), cmap="viridis")
     plt.savefig(output_path)
     plt.close()
@@ -166,46 +223,28 @@ def plot_clustermap(tfidf_df, output_path, level="system"):
 # Main Pipeline
 # =======================
 
-if __name__ == "__main__":
-    output_dir = "./results"
-    ensure_dir(output_dir)
+def main():
+    ensure_dir(OUTPUT_DIR)
 
-    # Load data
     G = load_hpo_graph()
     name_map = build_hpo_name_map()
     hpoa_df = load_hpoa_file()
     disease_to_hpos = build_disease_to_hpo(hpoa_df)
 
-    # Define organ systems
-    top_systems = {
-        "HP:0000119": "Abnormality of the genitourinary system",
-        "HP:0000707": "Abnormality of the nervous system",
-        "HP:0000818": "Abnormality of the endocrine system",
-        "HP:0001197": "Abnormality of prenatal development or birth",
-        "HP:0001574": "Abnormality of the integument",
-        "HP:0001626": "Abnormality of the cardiovascular system",
-        "HP:0001871": "Abnormality of blood and blood-forming tissues",
-        "HP:0001939": "Abnormality of metabolism/homeostasis",
-        "HP:0002086": "Abnormality of the respiratory system",
-        "HP:0002715": "Abnormality of the immune system",
-        "HP:0025031": "Abnormality of the digestive system",
-        "HP:0033127": "Abnormality of the musculoskeletal system",
-    }
-
-    # Compute TF-IDF for systems
-    system_documents = build_system_documents(disease_to_hpos, top_systems, G)
+    # System-level TF-IDF
+    system_documents = build_system_documents(disease_to_hpos, TOP_SYSTEMS, G)
     tfidf_system_df = compute_tfidf(system_documents)
+    tfidf_system_df.to_csv(os.path.join(OUTPUT_DIR, "tfidf_systems.tsv"), sep="\t")
+    plot_top_terms(tfidf_system_df, name_map, OUTPUT_DIR)
+    plot_clustermap(tfidf_system_df, os.path.join(OUTPUT_DIR, "system_clustermap.png"), level="system")
 
-    # Save and visualize
-    tfidf_system_df.to_csv(os.path.join(output_dir, "tfidf_systems.tsv"), sep="\t")
-    plot_top_terms(tfidf_system_df, name_map, output_dir, top_n=15, threshold=0.1)
-    plot_clustermap(tfidf_system_df, os.path.join(output_dir, "system_clustermap.png"), level="system")
-
-    # Compute TF-IDF for diseases
+    # Disease-level TF-IDF (optimized)
     disease_documents = {d: " ".join(hpos) for d, hpos in disease_to_hpos.items()}
-    tfidf_disease_df = compute_tfidf(disease_documents)
+    tfidf_disease_df = compute_tfidf_disease(disease_documents, min_df=2, max_features=100)
+    tfidf_disease_df.to_csv(os.path.join(OUTPUT_DIR, "tfidf_diseases.tsv"), sep="\t")
+    plot_clustermap(tfidf_disease_df, os.path.join(OUTPUT_DIR, "disease_clustermap.png"), level="disease")
 
-    tfidf_disease_df.to_csv(os.path.join(output_dir, "tfidf_diseases.tsv"), sep="\t")
-    plot_clustermap(tfidf_disease_df, os.path.join(output_dir, "disease_clustermap.png"), level="disease")
+    logger.info("Processing complete. Outputs in 'results' directory.")
 
-    print("Processing complete. Outputs in ./results/")
+if __name__ == "__main__":
+    main()
