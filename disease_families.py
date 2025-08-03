@@ -287,6 +287,15 @@ with open("./results/hpo_grouped_terms.tsv", "w", newline='', encoding="utf-8") 
 
 hpoa_df = load_hpoa_file()
 
+# Build a dictionary mapping disease IDs to disease names
+if "disease_name" in hpoa_df.columns:
+    disease_name_map = dict(zip(hpoa_df["database_id"], hpoa_df["disease_name"]))
+elif "disease_label" in hpoa_df.columns:
+    disease_name_map = dict(zip(hpoa_df["database_id"], hpoa_df["disease_label"]))
+else:
+    print("Warning: No disease name column found!")
+    disease_name_map = {d: d for d in hpoa_df["database_id"]}
+
 disease_to_hpos = build_disease_to_hpo(hpoa_df)
 
 sample_keys = list(disease_to_hpos.keys())[:3]
@@ -355,3 +364,13 @@ top_terms_per_disease = get_top_terms_per_entity(tfidf_disease_df, top_n=10)
 # Print example for one disease
 for hpo_id, score in top_terms_per_disease['OMIM:100800']:
     print(f"{hpo_id} ({name_map.get(hpo_id, 'Unknown')}): {score:.4f}")
+
+threshold = 0.125
+
+for disease, hpo_ids in top_terms_per_disease.items():
+    disease_name = disease_name_map.get(disease, "Unknown disease")
+    print(f"Disease: {disease} ({disease_name})")
+    for hpo_id, score in hpo_ids:
+        if score > threshold:
+            print(f"  {hpo_id} ({name_map.get(hpo_id, 'Unknown')}): {score:.4f}")
+    print()
