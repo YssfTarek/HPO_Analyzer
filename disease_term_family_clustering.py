@@ -1,6 +1,7 @@
 import os
 import re
 import logging
+from typing import Optional
 from collections import defaultdict
 from typing import Dict, List
 
@@ -131,33 +132,31 @@ def build_system_documents(
     logger.info(f"Built {len(system_to_terms)} system documents.")
     return {system: " ".join(terms) for system, terms in system_to_terms.items()}
 
-def compute_tfidf(documents: Dict[str, str]) -> pd.DataFrame:
+def compute_tfidf(documents: Dict[str, str], name: str = "entity", min_df: int = 1, max_df: Optional[float] = 1.0, max_features: int = None, threshold_empty: bool = True) -> pd.DataFrame:
+    """
+    Compute a TF-IDF matrix for a dictionary of documents.
+
+    Parameters
+    ----------
+    documents : dict
+        Mapping of entity name to space-separated HPO terms.
+    name : str
+        Label for logging purposes.
+    min_df : int
+        Minimum number of documents a term must appear in.
+    max_features : int
+        Maximum number of features to keep.
+    threshold_empty : bool
+        If True, log a warning and return empty dataframe if no documents.
+
+    Returns
+    -------
+    pd.DataFrame
+        TF-IDF matrix (rows=entities, columns=HPO terms).
+    """
     if not documents:
-        logger.warning("No documents provided for TF-IDF computation.")
-        return pd.DataFrame()
-
-    items = list(documents.keys())
-    docs = list(documents.values())
-
-    vectorizer = TfidfVectorizer(
-        tokenizer=custom_tokenizer,
-        dtype=np.float32,
-        lowercase=False,
-        token_pattern=None
-    )
-    
-    tfidf_matrix = vectorizer.fit_transform(docs)
-    tfidf_df = pd.DataFrame.sparse.from_spmatrix(
-        tfidf_matrix, 
-        index=items, 
-        columns=vectorizer.get_feature_names_out()
-    )
-    logger.info(f"TF-IDF matrix computed with shape {tfidf_df.shape}.")
-    return tfidf_df
-
-def compute_tfidf_disease(documents: Dict[str, str], min_df: int = 2, max_features: int = 5000) -> pd.DataFrame:
-    if not documents:
-        logger.warning("No disease documents provided for TF-IDF computation.")
+        if threshold_empty:
+            logger.warning(f"No {name} documents provided for TF-IDF computation.")
         return pd.DataFrame()
 
     items = list(documents.keys())
@@ -169,16 +168,17 @@ def compute_tfidf_disease(documents: Dict[str, str], min_df: int = 2, max_featur
         lowercase=False,
         token_pattern=None,
         min_df=min_df,
+        max_df=max_df,
         max_features=max_features
     )
     
     tfidf_matrix = vectorizer.fit_transform(docs)
     tfidf_df = pd.DataFrame.sparse.from_spmatrix(
-        tfidf_matrix, 
-        index=items, 
+        tfidf_matrix,
+        index=items,
         columns=vectorizer.get_feature_names_out()
     )
-    logger.info(f"Disease-level TF-IDF matrix computed with shape {tfidf_df.shape}.")
+    logger.info(f"{name.capitalize()} TF-IDF matrix computed with shape {tfidf_df.shape}.")
     return tfidf_df
 
 # =======================
@@ -206,11 +206,16 @@ def plot_top_terms(tfidf_df: pd.DataFrame, name_map: Dict[str, str], output_dir:
         fname = os.path.join(output_dir, f"{clean_filename(entity)}_top_terms.png")
         plt.savefig(fname)
         plt.close()
-
-def plot_clustermap(tfidf_df: pd.DataFrame, output_path: str, level: str = "system"):
+     
+def plot_clustermap(tfidf_df: pd.DataFrame, output_path: str, level: str = "system", tfidf_threshold: int = None, top_n: Optional[int] = None):
+    if tfidf_threshold > 0:
+        tfidf_df = tfidf_df.loc[:, (tfidf_df > tfidf_threshold).any(axis=0)]
     if tfidf_df.empty:
         logger.warning(f"Skipping {level} clustermap: no data.")
         return
+    
+    if top_n and top_n > 0 and tfidf_df.shape[0] > top_n:
+        tfidf_df = tfidf_df.loc[tfidf_df.sum(axis=1).nlargest(top_n).index]
 
     ensure_dir(os.path.dirname(output_path))
 
@@ -233,16 +238,22 @@ def main():
 
     # System-level TF-IDF
     system_documents = build_system_documents(disease_to_hpos, TOP_SYSTEMS, G)
-    tfidf_system_df = compute_tfidf(system_documents)
+    tfidf_system_df = compute_tfidf(system_documents, name="system",max_df=0.8)
     tfidf_system_df.to_csv(os.path.join(OUTPUT_DIR, "tfidf_systems.tsv"), sep="\t")
     plot_top_terms(tfidf_system_df, name_map, OUTPUT_DIR)
-    plot_clustermap(tfidf_system_df, os.path.join(OUTPUT_DIR, "system_clustermap.png"), level="system")
+    plot_clustermap(tfidf_system_df, os.path.join(OUTPUT_DIR, "system_clustermap.png"), level="system", tfidf_threshold=0.1)
 
     # Disease-level TF-IDF (optimized)
-    disease_documents = {d: " ".join(hpos) for d, hpos in disease_to_hpos.items()}
-    tfidf_disease_df = compute_tfidf_disease(disease_documents, min_df=2, max_features=100)
+    disease_id_to_name = hpoa_df.drop_duplicates('database_id').set_index('database_id')['disease_name'].to_dict()
+    disease_documents = {disease_id_to_name.get(d, d): " ".join(hpos) for d, hpos in disease_to_hpos.items()}
+
+
+    tfidf_disease_df = compute_tfidf(disease_documents, name="disease", min_df=1, max_df=0.8, max_features=500)
+    tfidf_disease_df = tfidf_disease_df.loc[~(tfidf_disease_df==0).all(axis=1)]
+    tfidf_disease_df = tfidf_disease_df.loc[:, ~(tfidf_disease_df==0).all(axis=0)]
+    tfidf_disease_df = tfidf_disease_df.fillna(0)
     tfidf_disease_df.to_csv(os.path.join(OUTPUT_DIR, "tfidf_diseases.tsv"), sep="\t")
-    plot_clustermap(tfidf_disease_df, os.path.join(OUTPUT_DIR, "disease_clustermap.png"), level="disease")
+    plot_clustermap( tfidf_disease_df, os.path.join(OUTPUT_DIR, "disease_clustermap.png"), level="disease", tfidf_threshold=0.1, top_n=15)
 
     logger.info("Processing complete. Outputs in 'results' directory.")
 
